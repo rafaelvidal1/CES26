@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Tarefa 2</title>
+<style>
+      #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+      }
+	  
+	  #video {
+        width: 100%;
+        height: 200px;
+        background-color: LightCyan;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Mapa com sua localização e trailer toy story!</h3>
+    <div id="map"></div>
+	<div id="videodiv"></div>
+	<script>
+	var videodiv = document.getElementById('video');
+	</script>
+	<script>
+      function initMap() {
+        var home = {lat: -23.1794, lng: 45.88};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: home
+        });
+		var infoWindow = new google.maps.InfoWindow({map: map});
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Você está aqui!!');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+		
+		
+      }
+	
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHfJZu58QQos6bDEqHG-u-fpRTvYgrE18&callback=initMap">
+    </script>
+	<video id="video" playsinline autoplay muted loop>
+<source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4">
+</video>
+  </body>
+</html>

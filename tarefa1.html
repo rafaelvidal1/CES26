@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Tarefa 1</title>
+<script>
+function setBGColor(attr,value){
+  if(document.body) eval('document.body.'+attr+'="'+value+'"');
+  else notSupported();
+}
+</script>
+</head>
+<body>
+
+<p id="header">Mudando a cor da página e o header!</p> 
+<script>
+document.getElementById("header").style.fontSize="xx-large";
+</script>
+
+
+<p id="p2">Texto antigo</p>
+
+<button type="button" onclick='document.getElementById("p2").innerHTML = "Novo texto!!!"'>Click!</button>
+
+<form> 
+ <p><b><tt>Cor de fundo</tt></p>
+ <select onChange="setBGColor('bgColor',
+    this.options[this.selectedIndex].value);"> 
+<option value="white">white 
+<option value="green">green
+<option value="blue">blue
+ </select>
+</form>
+</body>
+</html>
